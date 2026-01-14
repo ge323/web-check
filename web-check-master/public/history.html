@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="./style/css.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+   
+        <div id="all">
+
+        <!-- 상단 메뉴바(header) -->
+        <div id="header">
+            <div class="wrap">
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="./index.html"><img src="" alt="no image"></a>
+                    </div>
+                    <ul class="menus">
+                        <li><a href="./index.html">홈</a></li>
+                        <li><a href="./intro.html">소개</a></li>
+                        <li><a href="./gallery.html">AI 갤러리</a></li>
+                        <li><a href="./history.html">히스토리</a></li>
+                        <div class="right">
+                            <select style="cursor: pointer;" name="language" id="language">
+                                <option value="한국어">한국어</option>
+                                <option value="영어">영어</option>
+                                <option value="일본어">일본어</option>
+                            </select>
+                        </div>
+                    </ul>
+                    <!-- <div class="right">
+                        <select name="language" id="language">
+                            <option value="한국어">한국어</option>
+                            <option value="영어">영어</option>
+                            <option value="일본어">일본어</option>
+                        </select>
+                    </div> -->
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인 부분(main) -->
+        
+<div id="main">
+
+  <section class="history-section">
+    
+    <!-- 제목 영역 -->
+    <div class="history-header">
+      <h2>최근 분석 내역</h2>
+      <a href="#" class="clear-all">전체 삭제</a>
+    </div>
+
+    <!-- 안내 문구 -->
+    <div class="history-notice">
+      분석 내역은 브라우저에만 저장되며 서버에는 기록되지 않습니다.
+    </div>
+
+    <!-- 히스토리 리스트 -->
+    <div class="history-list">
+
+      <!-- 카드 1개 -->
+      <div class="history-item">
+        <div class="file-info">
+          <img src="./img/file_icon.png" alt="file">
+          <div>
+            <p class="file-name">product_demo_clip1</p>
+            <span class="date">Jan 7, 2026 11:15 am</span>
+          </div>
+        </div>
+
+        <div class="right-group">
+          <div class="result">
+            <span class="badge high">AI 생성 가능성 높음</span>
+          </div>
+
+          <div class="actions">
+            <button>👁</button>
+            <button>🗑</button>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- 카드 2개 -->
+         <div class="history-item">
+        <div class="file-info">
+          <img src="./img/file_icon.png" alt="file">
+          <div>
+            <p class="file-name">product_demo_clip2</p>
+            <span class="date">Jan 15, 2026 13:16 pm</span>
+          </div>
+        </div>
+
+        <div class="right-group">
+          <div class="result">
+            <span class="badge medium">AI 생성 가능성 중간</span>
+          </div>
+
+          <div class="actions">
+            <button>👁</button>
+            <button>🗑</button>
+          </div>
+        </div>
+      </div>
+       
+
+
+      <!-- 카드 3개 -->
+      <div class="history-item">
+        <div class="file-info">
+          <img src="./img/file_icon.png" alt="file">
+          <div>
+            <p class="file-name">product_demo_clip3</p>
+            <span class="date">Jan 19, 2026 19:49 pm</span>
+          </div>
+        </div>
+
+        <div class="right-group">
+          <div class="result">
+            <span class="badge low">AI 생성 가능성 낮음</span>
+          </div>
+        
+
+          <div class="actions">
+            <button>👁</button>
+            <button>🗑</button>
+          </div>
+
+        </div>
+      </div>
+
+
+<!-- 카드 4개 -->
+      <div class="history-item">
+        <div class="file-info">
+          <img src="./img/file_icon.png" alt="file">
+          <div>
+            <p class="file-name">product_demo_clip4</p>
+            <span class="date">Jan 20, 2026 12:24 pm</span>
+          </div>
+        </div>
+
+        <div class="right-group">
+          <div class="result">
+            <span class="badge high">AI 생성 가능성 높음</span>
+          </div>
+       
+
+          <div class="actions">
+            <button>👁</button>
+            <button>🗑</button>
+          </div>
+        </div>  
+      </div>
+
+
+      <!-- 카드 5개 -->
+      <div class="history-item">
+        <div class="file-info">
+          <img src="./img/file_icon.png" alt="file">
+          <div>
+            <p class="file-name">product_demo_clip5</p>
+            <span class="date">Jan 23, 2026 21:02 pm</span>
+          </div>
+        </div>
+
+        <div class="right-group">
+          <div class="result">
+            <span class="badge low">AI 생성 가능성 낮음</span>
+          </div>
+
+          <div class="actions">
+            <button>👁</button>
+            <button>🗑</button>
+          </div>
+        </div>  
+      </div>
+  
+
+    <!-- 카드 6개 -->
+      <div class="history-item">
+        <div class="file-info">
+          <img src="./img/file_icon.png" alt="file">
+          <div>
+            <p class="file-name">product_demo_clip6</p>
+            <span class="date">Jan 26, 2026 10:51 am</span>
+          </div>
+        </div>
+
+        <div class="right-group">
+          <div class="result">
+            <span class="badge medium">AI 생성 가능성 중간</span>
+          </div>
+
+          <div class="actions">
+            <button>👁</button>
+            <button>🗑</button>
+          </div>
+        </div> 
+      </div>
+
+
+      <!-- 카드 7개 -->
+      <div class="history-item">
+        <div class="file-info">
+          <img src="./img/file_icon.png" alt="file">
+          <div>
+            <p class="file-name">product_demo_clip7</p>
+            <span class="date">Jan 28, 2026 15:34 pm</span>
+          </div>
+        </div>
+
+        <div class="right-group">
+          <div class="result">
+            <span class="badge high">AI 생성 가능성 높음</span>
+          </div>
+
+          <div class="actions">
+            <button>👁</button>
+            <button>🗑</button>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+</div>
+
+
+
+
+
+
+        <!-- 하단(footer) -->
+        <footer>
+          
+        </footer>
+    
+    
+    
+    </div>
+  </body>
+</html>
