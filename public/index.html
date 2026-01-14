@@ -9,9 +9,8 @@
     <title>졸업설계-웹</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
    
-        <div id="all">
+    <div id="all">
 
         <!-- 상단 메뉴바(header) -->
         <div id="header">
@@ -47,15 +46,61 @@
 
         <!-- 메인 부분(main) -->
         <div id="main">
-            <div></div>
+            <div class="wrap">
+                <div class="box">
+                    <div class="left">
+                        <div class="title">
+                            <h1>당신이 보고있는 영상,<br> <span style="background-image: linear-gradient(to right, blue, skyblue); background-clip: text; -webkit-background-clip: text; color: transparent;">진짜인지</span> 확인하세요</h1>
+                            <p>딥러닝 기술로 영상의 위변조 여부를 분석하고, 의심 구간과 근거를 명확하게 제시합니다.</p>
+                        </div>
+                        <div class="btn">
+                            <button><a href="#">분석하기</a></button>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <input type="radio" name="tab" id="t1" checked hidden>
+                        <input type="radio" name="tab" id="t2" hidden>
+                        <div class="tabs">
+                            <label for="t1">파일 업로드</label>
+                            <label for="t2">url 입력</label>
+                        </div>
+                        <!-- 이미지 드래그온 드랍 -->
+                        <div class="tab-box">
+                            
+                            <!-- 이미지 -->
+                            <div class="tb">
+                                <div class="drag">
+                                    <p>여긴 드래그</p>
+                                </div>
+                            </div>
+
+                            <!-- url -->
+                            <div class="tb">
+                                <input type="text">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <!-- <div class="bak-img">
+                <img src="./img/main.png" alt="">
+            </div> -->
         </div>
-
-
 
 
         <!-- 하단(footer) -->
         <footer>
-          
+          <div class="wrap">
+                <div class="btm-text">
+                    <p>졸업설계 프로젝트</p>
+                    <div class="logo">
+                        <a href="./index.html"><img src="" alt="no image"></a>
+                    </div>
+
+                </div>
+            </div>
         </footer>
     
     
