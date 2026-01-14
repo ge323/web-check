@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <title>졸업설계-웹</title>
-  </head>
+
+</head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
    
-        <div id="all">
+    <div id="all">
 
         <!-- 상단 메뉴바(header) -->
         <div id="header">
@@ -47,19 +47,80 @@
 
         <!-- 메인 부분(main) -->
         <div id="main">
-            <div></div>
+            <div class="wrap">
+                <div class="box">
+                    <div class="left">
+                        <div class="title">
+                            <h1>당신이 보고있는 영상,<br> <span style="background-image: linear-gradient(to right, blue, skyblue); background-clip: text; -webkit-background-clip: text; color: transparent;">진짜인지</span> 확인하세요</h1>
+                            <p>딥러닝 기술로 영상의 위변조 여부를 분석하고, 의심 구간과 근거를 명확하게 제시합니다.</p>
+                        </div>
+                        <div class="btn">
+                            <button><a href="#">분석하기</a></button>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <input type="radio" name="tab" id="t1" checked hidden>
+                        <input type="radio" name="tab" id="t2" hidden>
+
+                        <div class="tabs">
+                            <label for="t1">파일 업로드</label>
+                            <label for="t2">url 입력</label>
+                        </div>
+
+                        <div class="tab-box">
+                        <!-- 파일 업로드 -->
+                        <div class="tb tb-file">
+                            <input type="file" id="fileInput" class="file-input" accept="image/*" hidden />
+
+                            <div class="upload-row">
+                            <span class="file-status" id="fileStatus">선택된 파일 없음</span>
+                            </div>
+
+                            <div class="dropzone" id="dropzone" tabindex="0" role="button">
+                            <div class="dropzone-text" id="dropzoneText">
+                                <p class="dropzone-title">여긴 드래그</p>
+                                <p class="dropzone-sub">또는 위의 “파일 선택”을 눌러 업로드</p>
+                            </div>
+                            <img id="dzPreview" class="dz-preview" alt="업로드 이미지 미리보기" hidden />
+                            </div>
+                        </div>
+
+                        <!-- url 입력 -->
+                        <div class="tb tb-url">
+                            <input type="text" class="url-box" placeholder="url을 입력하세요.">
+                        </div>
+                        </div>
+
+                        </div>
+                    
+
+                </div>
+                </div>
+                
+            </div>
+            <!-- <div class="bak-img">
+                <img src="./img/main.png" alt="">
+            </div> -->
         </div>
-
-
 
 
         <!-- 하단(footer) -->
         <footer>
-          
+            <div class="wrap">
+                <div class="btm-text">
+                    <p>졸업설계 프로젝트</p>
+                    <div class="logo">
+                        <a href="./index.html"><img src="" alt="no image"></a>
+                    </div>
+
+                </div>
+            </div>
         </footer>
     
     
     
     </div>
   </body>
-</html>
+</html>    
+
+<script src="./js/drag.js"></script>
