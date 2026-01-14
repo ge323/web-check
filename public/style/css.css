@@ -80,7 +80,7 @@ ul.menus {
 
 
 #main {
-    height: 89.8vh;
+    min-height: 89.8vh;
     /*메인에 footer가 꽉차 보이도록*/
     /* background-color: rgb(215, 250, 255); */
     width: 100%;
@@ -458,6 +458,212 @@ ul.menus {
 }
 
 
+/* 갤러리 섹션 -> 지금은 일단 결과 페이지로 쓰는중*/
+.gallery-section {
+    margin-top: 140px;
+}
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.gallery-eyebrow {
+    margin: 0;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8fa2c7;
+}
+
+.gallery-title {
+    margin: 6px 0;
+    font-size: 32px;
+}
+
+.gallery-description {
+    margin: 0;
+    color: #555;
+}
+
+.download {
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid #1f7a4a;
+    background: linear-gradient(120deg, #2563eb, #7c3aed);
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ----- 갤러리 페이지----- */
+.result-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.result-card__content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.result-card__meta {
+    margin: 0;
+    font-size: 13px;
+    color: #888;
+}
+
+.result-card__text {
+    margin: 0;
+    color: #555;
+}
+
+.result-card__footer {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-chip {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #fff;
+}
+
+.result-chip.danger {
+    background: #dc2626;
+}
+
+.result-chip.warning {
+    background: #f97316;
+}
+
+.result-chip.safe {
+    background: #16a34a;
+}
+
+.result-score {
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+}
+
+/* 히트맵 카드 */
+.heatmap-card {
+    margin-top: 48px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.heatmap-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.heatmap-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.heatmap-arrow {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(15, 23, 42, 0.05);
+    border-radius: 999px;
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.heatmap-arrow:hover {
+    background: rgba(15, 23, 42, 0.1);
+}
+
+.heatmap-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.heatmap-label {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.heatmap-preview {
+    border-radius: 18px;
+    min-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(13, 23, 45, 0.85);
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.2em;
+    font-weight: 700;
+}
+
+.heatmap-preview--accent {
+    background: radial-gradient(circle at top, rgba(239, 68, 68, 0.4), rgba(59, 130, 246, 0.3));
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.heatmap-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* 반응형 (모바일 1열) */
+@media (max-width: 768px) {
+.gallery-stage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.gallery-preview {
+    border-radius: 24px;
+    border: 1px dashed #b3b3b3;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    color: #555;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.gallery-preview span {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #a3a3a3;
+}
+
+@media (max-width: 768px) {
+    .gallery-stage {
+        grid-template-columns: 1fr;
+    }
+}
+}
+/* 갤러리 섹션 끝 -> 지금은 일단 결과 페이지로 쓰는중*/
+
 .right-group {
     margin-left: auto;
     display: flex;
@@ -486,9 +692,7 @@ footer {
     height: 100px;
     width: 100%;
     background-color: rgb(73, 105, 219);
-    position: fixed;
-    position: absolute;
-    bottom: 0;
+    margin-top: 80px;
 }
 
 footer p {
@@ -503,3 +707,163 @@ footer p {
     padding-top: 40px;
     /* background-color: #ccc; */
 }
+
+/* ----- Gallery layout (분석 결과 미리보기 + 영상 세부사항) ----- */
+.gallery-section {
+    margin-top: 140px;
+}
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.gallery-eyebrow {
+    margin: 0;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8fa2c7;
+}
+
+.gallery-title {
+    margin: 6px 0;
+    font-size: 32px;
+}
+
+.gallery-description {
+    margin: 0;
+    color: #555;
+}
+
+.download {
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid #1f7a4a;
+    background: linear-gradient(120deg, #2563eb, #7c3aed);
+    color: #fff;
+    font-weight: 600;
+}
+
+.gallery-stage {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(320px, 1fr);
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.gallery-preview {
+    border-radius: 24px;
+    border: 1px dashed #b3b3b3;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    color: #555;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.gallery-preview span {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #a3a3a3;
+}
+
+.gallery-results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.result-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.result-card__content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.result-card__meta {
+    margin: 0;
+    font-size: 13px;
+    color: #888;
+}
+
+.result-card__text {
+    margin: 0;
+    color: #555;
+}
+
+.result-card__footer {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-chip {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #fff;
+}
+
+.result-chip.danger {
+    background: #dc2626;
+}
+
+.result-chip.warning {
+    background: #f97316;
+}
+
+.result-chip.safe {
+    background: #16a34a;
+}
+
+.result-score {
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+}
+
+/* 분석 정보 리스트 */
+.analysis-details {
+    margin-top: 16px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+    color: #666;
+}
+
+.analysis-details div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.analysis-details strong {
+    color: #111;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .gallery-stage {
+        grid-template-columns: 1fr;
+    }
+}
+/* 분석 결과 - 세부사항 끝*/

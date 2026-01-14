@@ -1,66 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="stylesheet" href="./style/css.css">
+    <link rel="stylesheet" href="./style/css.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <title>React App</title>
+    <title>AI 갤러리</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-   
-        <div id="all">
-
-        <!-- 상단 메뉴바(header) -->
-        <div id="header">
-            <div class="wrap">
-                <div class="header-top">
-                    <div class="logo">
-                        <a href="./index.html"><img src="" alt="no image"></a>
-                    </div>
-                    <ul class="menus">
-                        <li><a href="./index.html">홈</a></li>
-                        <li><a href="./intro.html">소개</a></li>
-                        <li><a href="./gallery.html">AI 갤러리</a></li>
-                        <li><a href="./history.html">히스토리</a></li>
-                        <div class="right">
-                            <select style="cursor: pointer;" name="language" id="language">
-                                <option value="한국어">한국어</option>
-                                <option value="영어">영어</option>
-                                <option value="일본어">일본어</option>
-                            </select>
-                        </div>
-                    </ul>
-                    <!-- <div class="right">
-                        <select name="language" id="language">
-                            <option value="한국어">한국어</option>
-                            <option value="영어">영어</option>
-                            <option value="일본어">일본어</option>
-                        </select>
-                    </div> -->
-                    
-                </div>
+    <div id="all">
+      <div id="header">
+        <div class="wrap">
+          <div class="header-top">
+            <div class="logo">
+              <a href="./index.html"><img src="" alt="no image" /></a>
             </div>
+            <ul class="menus">
+              <li><a href="./index.html">홈</a></li>
+              <li><a href="./intro.html">소개</a></li>
+              <li><a href="./gallery.html">AI 갤러리</a></li>
+              <li><a href="./history.html">히스토리</a></li>
+              <div class="right">
+                <select style="cursor: pointer" name="language" id="language">
+                  <option value="korean">한국어</option>
+                  <option value="english">영어</option>
+                  <option value="japanese">일본어</option>
+                </select>
+              </div>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <!-- 메인 부분(main) -->
-        <div id="main">
-            
+      <div id="main">
+        <div class="wrap">
+          <section class="gallery-section">
+            <div class="gallery-header">
+              <div>
+                <h2 class="gallery-title">분석 결과</h2>
+                <p class="gallery-description">
+                  이 영상은 높은 확률로 AI 생성 또는 조작되었을 가능성이 있습니다.
+                </p>
+              </div>
+              <button class="download">전체 보고서 다운로드 (PDF)</button>
+            </div>
+
+            <div class="gallery-stage">
+              <div class="gallery-preview">
+                <p>영상 미리보기</p>
+                <span>NO IMAGE</span>
+              </div>
+
+              <div class="gallery-results">
+              <article class="result-card">
+                <div class="result-card__content">
+                  <p class="result-card__meta">2024.01.11 · 10:30 AM</p>
+                  <h3>의심스러운 인물 영상</h3>
+                  <p class="result-card__text">AI 생성 가능성 87% · 신뢰도 94%</p>
+                  <div class="result-card__footer">
+                    <span class="result-chip danger">주의 필요</span>
+                    <span class="result-score">87%</span>
+                  </div>
+                  <div class="analysis-details">
+                    <div>
+                      <span>분석 시간</span>
+                      <strong>14.2초</strong>
+                    </div>
+                    <div>
+                      <span>영상 길이</span>
+                      <strong>2분 34초</strong>
+                    </div>
+                    <div>
+                      <span>해상도</span>
+                      <strong>1920x1080</strong>
+                    </div>
+                    <div>
+                      <span>프레임 레이트</span>
+                      <strong>30fps</strong>
+                    </div>
+                    <div>
+                      <span>파일 크기</span>
+                      <strong>245MB</strong>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              </div>
+            </div>
+
+            <section class="heatmap-card">
+              <div class="result-card__content">
+                <div class="heatmap-header">
+                  <div>
+                    <h3>AI (Grad-CAM) 히트맵</h3>
+                    <p class="result-card__text">AI 모델이 분석한 영상의 특정 영역을 시각화합니다.</p>
+                  </div>
+                  <div class="heatmap-nav">
+                    <button type="button" class="heatmap-arrow">&lsaquo;</button>
+                    <button type="button" class="heatmap-arrow">&rsaquo;</button>
+                  </div>
+                </div>
+                <div class="heatmap-grid">
+                  <div>
+                    <p class="heatmap-label">원본 영상</p>
+                    <div class="heatmap-preview">NO IMAGE</div>
+                  </div>
+                  <div>
+                    <p class="heatmap-label">AI 감지 히트맵</p>
+                    <div class="heatmap-preview heatmap-preview--accent">NO IMAGE</div>
+                  </div>
+                </div>
+                <p class="heatmap-note">
+                  빨간색 영역은 AI 모델이 조작 신호로 감지한 부분입니다. 파란색 영역은 자연스러운 특성을 보입니다.
+                </p>
+              </div>
+            </section>
+          </section>
         </div>
+      </div>
 
-
-
-
-
-        <!-- 하단(footer) -->
-        <footer>
-          
-        </footer>
-    
-    
-    
+      <footer>
+        <div class="wrap">
+          <div class="btm-text">
+            <p>졸업설계 프로젝트</p>
+            <div class="logo">
+              <a href="./index.html"><img src="" alt="no image" /></a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
