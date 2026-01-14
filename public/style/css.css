@@ -1,3 +1,6 @@
+css.css
+
+
 * {
     margin: 0;
     padding: 0;
@@ -87,4 +90,96 @@ ul.menus {
 footer {
     height: 100px;
     background-color: #ccc;
+}
+
+
+
+/* 히스토리 부분(history-section) */
+.history-notice {
+  max-width: 900px;      
+  margin: 0 auto;  
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 900px;      
+  margin: 0 auto;  
+  
+}
+
+.history-item {
+  display: flex;
+  align-items: center;        
+  gap: 16px;                  
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 220px;        
+}
+
+
+.file-name {
+  font-weight: 600;
+  margin: 0;
+}
+
+.date {
+  color: #777;
+  font-size: 13px;
+  min-width: 180px;
+}
+
+/* 결과 뱃지 */
+.history-item .badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 높음 - 빨강 */
+.history-item .badge.high {
+  background-color: #ffe5e5;
+  color: #d93025;
+}
+
+/* 중간 - 노랑 */
+.history-item .badge.medium {
+  background-color: #fff4cc;
+  color: #b26a00;
+}
+
+/* 낮음 - 초록 */
+.history-item .badge.low {
+  background-color: #e6fff1;
+  color: #1f7a4a;
+}
+
+
+.right-group {
+  margin-left: auto;     
+  display: flex;
+  align-items: center;
+  gap: 10px;             
+  justify-content:flex-end;
+}
+
+
+/* 버튼 영역 */
+.actions {
+  /*margin-left: auto;*/
+  display: flex;
+  gap: 8px;
 }
