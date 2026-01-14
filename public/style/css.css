@@ -93,13 +93,38 @@ footer {
 
 /* 히스토리 부분(history-section) */
 .history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
   max-width: 900px;      
   margin: 0 auto;  
+  padding-top: 60px;
+}
+
+.history-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.clear-all {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 16px;
+}
+
+.clear-all:hover {
+    text-decoration: underline;
 }
 
 .history-notice {
   max-width: 900px;      
   margin: 0 auto;  
+  margin: 8px auto 24px;
 }
 
 .history-list {
