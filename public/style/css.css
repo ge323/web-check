@@ -39,6 +39,8 @@ li {
     border-bottom: 1px solid #ccc;
     position: fixed;
     z-index: 100;
+    position: absolute;
+    top: 0;
 }
 
 .header-top {
@@ -81,7 +83,7 @@ ul.menus {
     height: 89.8vh;
     /*메인에 footer가 꽉차 보이도록*/
     /* background-color: rgb(215, 250, 255); */
-
+    width: 100%;
     position: relative;
 }
 
@@ -125,12 +127,163 @@ ul.menus {
 }
 
 #main .box {
-    display: flex;
-    justify-content: space-between;
     position: absolute;
     top: 300px;
+    display: flex;
     justify-content: space-between;
-    width: 50%;
+}
+
+#main .box .right {
+    position: relative;
+    bottom: 100px;
+}
+
+#main .box .left {
+    padding-right: 200px;
+}
+
+
+/* 파일 드래그 부분 복붙 */
+/* 탭 기본(있으면 생략 가능) */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.tabs label {
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background: #f7f7f7;
+    font-weight: 600;
+}
+
+/* 라디오 상태에 따라 탭 강조 */
+#t1:checked~.tabs label[for="t1"],
+#t2:checked~.tabs label[for="t2"] {
+    border-color: rgb(73, 105, 219);
+    color: rgb(255, 255, 255);
+    background: rgba(73, 105, 219, 0.08);
+}
+
+/* 탭 콘텐츠 표시 제어 */
+.tab-box .tb {
+    display: none;
+}
+
+#t1:checked~.tab-box .tb-file {
+    display: block;
+}
+
+#t2:checked~.tab-box .tb-url {
+    display: block;
+}
+
+.upload-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 14px;
+}
+
+.upload-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 14px;
+    cursor: pointer;
+    border: 2px solid rgb(73, 105, 219);
+    color: rgb(73, 105, 219);
+    font-weight: 800;
+    background: #fff;
+    transition: .2s;
+}
+
+.upload-btn:hover {
+    background: rgb(73, 105, 219);
+    color: #fff;
+}
+
+.file-status {
+    font-size: 14px;
+    color: #555;
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 드래그 영역 */
+.dropzone {
+    width: 440px;
+    /* 필요에 맞게 조절 */
+    height: 300px;
+    /* 이미지가 들어갈 영역 높이 */
+    border: 2px dashed #cfcfcf;
+    border-radius: 16px;
+    background: #fff;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    /* 이미지가 영역 밖으로 안 나가게 */
+    transition: .2s;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.dropzone.is-dragover {
+    border-color: rgb(73, 105, 219);
+    background: rgba(73, 105, 219, .06);
+}
+
+.dropzone-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.dropzone-sub {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: #777;
+}
+
+/* 이미지가 들어가면 안내 텍스트 숨김 */
+.dropzone.has-image .dropzone-text {
+    display: none;
+}
+
+
+/* 드래그 중 하이라이트 */
+.dropzone.is-dragover {
+    border-color: rgb(73, 105, 219);
+    background: rgba(73, 105, 219, .06);
+}
+
+.dropzone:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(73, 105, 219, .25);
+}
+
+/* ✅ dropzone 안에 꽉 차는 미리보기 */
+.dz-preview {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    /* cover로 바꾸면 꽉 차게(잘릴 수 있음) */
+    border-radius: 14px;
+    background: #fff;
+}
+
+/* 이미지가 들어가면 안내 텍스트 숨김 */
+.dropzone.has-image .dropzone-text {
+    display: none;
 }
 
 /* 탭 */
@@ -163,12 +316,21 @@ ul.menus {
     display: none;
 }
 
-#t1:checked~.tab-box .tb:nth-child(1) {
+#t1:checked~.tab-box .tb-file {
     display: block;
 }
 
-#t2:checked~.tab-box .tb:nth-child(2) {
+#t2:checked~.tab-box .tb-url {
     display: block;
+}
+
+.tab-box .tb input {
+    padding: 10px 20px;
+}
+
+.tb-file {
+    position: relative;
+    bottom: 30px;
 }
 
 /* 중요한 코드 아님 */
@@ -186,20 +348,26 @@ ul.menus {
 
 
 /* 히스토리 부분(history-section) */
+.history-section {
+    margin-top: 100px;
+}
+
 .history-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6px;
-  max-width: 900px;      
-  margin: 0 auto;  
-  padding-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 60px;
 }
 
 .history-title {
     margin: 0;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 700;
+    border-left: 3px solid #222;
+    padding: 0px 10px;
 }
 
 .clear-all {
@@ -216,102 +384,111 @@ ul.menus {
 }
 
 .history-notice {
-  max-width: 900px;      
-  margin: 0 auto;  
-  margin: 8px auto 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    margin: 8px auto 24px;
+    color: #797979;
 }
 
 .history-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  max-width: 900px;      
-  margin: 0 auto;  
-  
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 900px;
+    margin: 0 auto;
+
 }
 
 .history-item {
-  display: flex;
-  align-items: center;        
-  gap: 16px;                  
-  padding: 12px 16px;
-  background: #fff;
-  border: 1px solid #e7e7e7;
-  border-radius: 12px;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px solid #e7e7e7;
+    border-radius: 12px;
+    width: 100%;
 }
 
 .file-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 220px;        
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 220px;
 }
 
 
 .file-name {
-  font-weight: 600;
-  margin: 0;
+    font-weight: 600;
+    margin: 0;
 }
 
 .date {
-  color: #777;
-  font-size: 13px;
-  min-width: 180px;
+    color: #777;
+    font-size: 13px;
+    min-width: 180px;
 }
 
 
 .history-item .badge {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-  white-space: nowrap;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 /* 높음 - 빨강 */
 .history-item .badge.high {
-  background-color: #ffe5e5;
-  color: #d93025;
+    background-color: #ffe5e5;
+    color: #d93025;
 }
 
 /* 중간 - 노랑 */
 .history-item .badge.medium {
-  background-color: #fff4cc;
-  color: #b26a00;
+    background-color: #fff4cc;
+    color: #b26a00;
 }
 
 /* 낮음 - 초록 */
 .history-item .badge.low {
-  background-color: #e6fff1;
-  color: #1f7a4a;
+    background-color: #e6fff1;
+    color: #1f7a4a;
 }
 
 
 .right-group {
-  margin-left: auto;     
-  display: flex;
-  align-items: center;
-  gap: 10px;             
-  justify-content:flex-end;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
 }
 
 
 .actions {
-  /*margin-left: auto;*/
-  display: flex;
-  gap: 8px;
+    /*margin-left: auto;*/
+    display: flex;
+    gap: 5px;
 }
 
-
+.actions button {
+    border: none;
+    padding: 5px 7px;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 20px;
+}
 
 /* footer */
 footer {
     height: 100px;
+    width: 100%;
     background-color: rgb(73, 105, 219);
     position: fixed;
-    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 footer p {

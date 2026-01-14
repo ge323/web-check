@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <title>졸업설계-웹</title>
-  </head>
+
+</head>
   <body>
    
     <div id="all">
@@ -60,27 +61,40 @@
                     <div class="right">
                         <input type="radio" name="tab" id="t1" checked hidden>
                         <input type="radio" name="tab" id="t2" hidden>
+
                         <div class="tabs">
                             <label for="t1">파일 업로드</label>
                             <label for="t2">url 입력</label>
                         </div>
-                        <!-- 이미지 드래그온 드랍 -->
+
                         <div class="tab-box">
-                            
-                            <!-- 이미지 -->
-                            <div class="tb">
-                                <div class="drag">
-                                    <p>여긴 드래그</p>
-                                </div>
+                        <!-- 파일 업로드 -->
+                        <div class="tb tb-file">
+                            <input type="file" id="fileInput" class="file-input" accept="image/*" hidden />
+
+                            <div class="upload-row">
+                            <span class="file-status" id="fileStatus">선택된 파일 없음</span>
                             </div>
 
-                            <!-- url -->
-                            <div class="tb">
-                                <input type="text">
+                            <div class="dropzone" id="dropzone" tabindex="0" role="button">
+                            <div class="dropzone-text" id="dropzoneText">
+                                <p class="dropzone-title">여긴 드래그</p>
+                                <p class="dropzone-sub">또는 위의 “파일 선택”을 눌러 업로드</p>
+                            </div>
+                            <img id="dzPreview" class="dz-preview" alt="업로드 이미지 미리보기" hidden />
                             </div>
                         </div>
-                        
-                    </div>
+
+                        <!-- url 입력 -->
+                        <div class="tb tb-url">
+                            <input type="text" class="url-box" placeholder="url을 입력하세요.">
+                        </div>
+                        </div>
+
+                        </div>
+                    
+
+                </div>
                 </div>
                 
             </div>
@@ -92,7 +106,7 @@
 
         <!-- 하단(footer) -->
         <footer>
-          <div class="wrap">
+            <div class="wrap">
                 <div class="btm-text">
                     <p>졸업설계 프로젝트</p>
                     <div class="logo">
@@ -107,4 +121,6 @@
     
     </div>
   </body>
-</html>
+</html>    
+
+<script src="./js/drag.js"></script>
