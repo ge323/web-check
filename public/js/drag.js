@@ -1,23 +1,42 @@
 (() => {
-  const fileInput    = document.getElementById("fileInput");
-  const dropzone     = document.getElementById("dropzone");
-  const fileStatus   = document.getElementById("fileStatus");
-  const dzPreview    = document.getElementById("dzPreview");
+  const fileInput            = document.getElementById("fileInput");
+  const dropzone             = document.getElementById("dropzone");
+  const fileStatus           = document.getElementById("fileStatus");
+  const dzPreview            = document.getElementById("dzPreview");
+  const loadingPreview       = document.getElementById("loadingPreview");
+  const loadingPreviewWrap   = document.querySelector(".loading-preview-wrapper");
+  const loadingPlaceholder   = document.getElementById("loadingPreviewPlaceholder");
+  const loadingFileName      = document.getElementById("loadingFileName");
+  const fileTabButton        = document.querySelector('.tabs label[for="t1"]');
+  const defaultFileLabel     = "파일을 선택해 주세요";
 
   if (!fileInput || !dropzone || !fileStatus || !dzPreview) return;
 
   const reset = () => {
     fileInput.value = "";
     fileStatus.textContent = "선택된 파일 없음";
+    fileStatus.style.display = "none";
     dzPreview.hidden = true;
     dzPreview.src = "";
     dropzone.classList.remove("has-image");
+    if (loadingPreview) {
+      loadingPreview.hidden = true;
+      loadingPreview.src = "";
+    }
+    if (loadingPlaceholder) {
+      loadingPlaceholder.hidden = false;
+      loadingPlaceholder.style.display = "";
+    }
+    if (loadingFileName) {
+      loadingFileName.textContent = defaultFileLabel;
+    }
+    if (loadingPreviewWrap) {
+      loadingPreviewWrap.classList.remove("has-image");
+    }
   };
 
   const showImage = (file) => {
     if (!file) { reset(); return; }
-
-    fileStatus.textContent = file.name;
 
     // 이미지 파일만
     if (!file.type.startsWith("image/")) {
@@ -29,13 +48,42 @@
     // 이전 src 정리
     dzPreview.hidden = true;
     dzPreview.src = "";
+    if (loadingPreview) {
+      loadingPreview.hidden = true;
+      loadingPreview.src = "";
+    }
+    if (loadingPlaceholder) {
+      loadingPlaceholder.hidden = false;
+      loadingPlaceholder.style.display = "";
+    }
 
-    const url = URL.createObjectURL(file);
-    dzPreview.onload = () => URL.revokeObjectURL(url);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result;
+      if (!result) return;
 
-    dzPreview.src = url;
-    dzPreview.hidden = false;
-    dropzone.classList.add("has-image");
+      dzPreview.src = result;
+      dzPreview.hidden = false;
+      dropzone.classList.add("has-image");
+
+      if (loadingPreview) {
+        loadingPreview.src = result;
+        loadingPreview.hidden = false;
+      }
+      if (loadingPlaceholder) {
+        loadingPlaceholder.hidden = true;
+        loadingPlaceholder.style.display = "none";
+      }
+      if (loadingPreviewWrap) {
+        loadingPreviewWrap.classList.add("has-image");
+      }
+      fileStatus.textContent = file.name;
+      fileStatus.style.display = "inline-block";
+      if (loadingFileName) {
+        loadingFileName.textContent = file.name;
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   // 드롭존 클릭/키보드 → 파일 선택창
@@ -47,6 +95,17 @@
       openPicker();
     }
   });
+
+  if (fileTabButton) {
+    fileTabButton.addEventListener("click", () => {
+      setTimeout(openPicker, 0);
+    });
+    fileTabButton.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        setTimeout(openPicker, 0);
+      }
+    });
+  }
 
   // 파일 선택
   fileInput.addEventListener("change", (e) => {

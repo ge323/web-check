@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./style/base.css">
+    <link rel="stylesheet" href="./style/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>졸업설계-웹</title>
+
+</head>
+  <body>
+   
+    <div id="all">
+
+        <!-- 상단 메뉴바(header) -->
+        <div id="header">
+            <div class="wrap">
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="./index.html"><img src="" alt="no image"></a>
+                    </div>
+                    <ul class="menus">
+                        <li><a href="./index.html">홈</a></li>
+                        <li><a href="./intro.html">소개</a></li>
+                        <li><a href="./gallery.html">AI 갤러리</a></li>
+                        <li><a href="./history.html">히스토리</a></li>
+                        <!-- 새로 만든 것  -->
+                        <li><a href="./login.html">로그인</a></li>
+                        <li><a href="./join.html">회원가입</a></li>
+                        <div class="right">
+                            <select style="cursor: pointer;" name="language" id="language">
+                                <option value="한국어">한국어</option>
+                                <option value="영어">영어</option>
+                                <option value="일본어">일본어</option>
+                            </select>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 회원가입 -->
+        <div id="main">
+            <div class="wrap">
+                <div class="login-wrap">
+                    <div class="login-card">
+                        <h2 class="login-title">회원가입</h2>
+                        <p class="login-sub">필수 정보를 입력하고 계정을 생성하세요.</p>
+
+                        <form class="login-form" action="#" method="post">
+                            <label class="login-label" for="joinId">아이디</label>
+                            <input id="joinId" name="joinId" class="login-input" type="text" placeholder="아이디를 입력하세요" />
+
+                            <label class="login-label" for="joinPw">비밀번호</label>
+                            <input id="joinPw" name="joinPw" class="login-input" type="password" placeholder="비밀번호를 입력하세요" />
+
+                            <label class="login-label" for="joinPw2">비밀번호 확인</label>
+                            <input id="joinPw2" name="joinPw2" class="login-input" type="password" placeholder="비밀번호를 다시 입력하세요" />
+
+                            <label class="login-label" for="joinName">이름</label>
+                            <input id="joinName" name="joinName" class="login-input" type="text" placeholder="이름을 입력하세요" />
+
+                            <label class="login-label" for="joinEmail">이메일</label>
+                            <input id="joinEmail" name="joinEmail" class="login-input" type="email" placeholder="example@email.com" />
+
+                            <button class="login-btn" type="submit">회원가입</button>
+
+                            <div class="login-foot">
+                                <span>이미 계정이 있으신가요?</span>
+                                <a class="signup-link" href="./login.html">로그인하러 가기 →</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+
+        <!-- 하단(footer) -->
+        <footer>
+            <div class="wrap">
+                <div class="btm-text">
+                    <p>졸업설계 프로젝트</p>
+                    <div class="logo">
+                        <a href="./index.html"><img src="" alt="no image"></a>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    
+    
+    </div>
+  </body>
+</html>    
+
+<script src="./js/drag.js"></script>

@@ -1,125 +1,207 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="stylesheet" href="./style/css.css" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./style/base.css">
+    <link rel="stylesheet" href="./style/gallery.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <title>AI 갤러리</title>
-  </head>
+    <title>졸업설계-웹</title>
+
+</head>
   <body>
+   
     <div id="all">
-      <div id="header">
-        <div class="wrap">
-          <div class="header-top">
-            <div class="logo">
-              <a href="./index.html"><img src="" alt="no image" /></a>
+
+        <!-- 상단 메뉴바(header) -->
+        <div id="header">
+            <div class="wrap">
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="./index.html"><img src="" alt="no image"></a>
+                    </div>
+                    <ul class="menus">
+                        <li><a href="./index.html">홈</a></li>
+                        <li><a href="./intro.html">소개</a></li>
+                        <li><a href="./gallery.html">AI 갤러리</a></li>
+                        <li><a href="./history.html">히스토리</a></li>
+                        <!-- 새로 만든 것  -->
+                        <li><a href="./login.html">로그인</a></li>
+                        <li><a href="./join.html">회원가입</a></li>
+                        <div class="right">
+                            <select style="cursor: pointer;" name="language" id="language">
+                                <option value="한국어">한국어</option>
+                                <option value="영어">영어</option>
+                                <option value="일본어">일본어</option>
+                            </select>
+                        </div>
+                    </ul>
+                </div>
             </div>
-            <ul class="menus">
-              <li><a href="./index.html">홈</a></li>
-              <li><a href="./intro.html">소개</a></li>
-              <li><a href="./gallery.html">AI 갤러리</a></li>
-              <li><a href="./history.html">히스토리</a></li>
-              <div class="right">
-                <select style="cursor: pointer" name="language" id="language">
-                  <option value="korean">한국어</option>
-                  <option value="english">영어</option>
-                  <option value="japanese">일본어</option>
-                </select>
-              </div>
-            </ul>
-          </div>
         </div>
-      </div>
 
       <div id="main">
         <div class="wrap">
-          <section class="gallery-section">
-            <div class="gallery-header">
-              <div>
-                <h2 class="gallery-title">분석 결과</h2>
-                <p class="gallery-description">
-                  이 영상은 높은 확률로 AI 생성 또는 조작되었을 가능성이 있습니다.
-                </p>
-              </div>
-              <button class="download">전체 보고서 다운로드 (PDF)</button>
+
+        <!-- ✅ 분석 결과 페이지(UI) : homeUI 밖(형제), 딱 1번만 존재 -->
+        <section id="resultPage" class="result-page">
+          <!-- 상단 헤더 -->
+          <div class="result-top">
+            <div class="rt-left">
+              <h2 class="rt-title">분석 결과 리포트</h2>
+              <p class="rt-sub">업로드한 영상의 위변조/AI 생성 의심 구간을 종합 분석했습니다.</p>
             </div>
 
-            <div class="gallery-stage">
-              <div class="gallery-preview">
-                <p>영상 미리보기</p>
-                <span>NO IMAGE</span>
+            <div class="rt-right">
+              <button type="button" class="ghost-pill" id="backToHomeBtn">메인으로 돌아가기</button>
+            </div>
+          </div>
+
+          <!-- 1) 요약 + 정보 -->
+          <div class="result-grid">
+            <div class="card video-card">
+              <div class="card-head">
+                <h3>의심스러운 인물 영상</h3>
+                <span class="badge warn">주의 필요</span>
               </div>
 
-              <div class="gallery-results">
-              <article class="result-card">
-                <div class="result-card__content">
-                  <p class="result-card__meta">2024.01.11 · 10:30 AM</p>
-                  <h3>의심스러운 인물 영상</h3>
-                  <p class="result-card__text">AI 생성 가능성 87% · 신뢰도 94%</p>
-                  <div class="result-card__footer">
-                    <span class="result-chip danger">주의 필요</span>
-                    <span class="result-score">87%</span>
-                  </div>
-                  <div class="analysis-details">
-                    <div>
-                      <span>분석 시간</span>
-                      <strong>14.2초</strong>
-                    </div>
-                    <div>
-                      <span>영상 길이</span>
-                      <strong>2분 34초</strong>
-                    </div>
-                    <div>
-                      <span>해상도</span>
-                      <strong>1920x1080</strong>
-                    </div>
-                    <div>
-                      <span>프레임 레이트</span>
-                      <strong>30fps</strong>
-                    </div>
-                    <div>
-                      <span>파일 크기</span>
-                      <strong>245MB</strong>
-                    </div>
-                  </div>
-                </div>
-              </article>
+              <div class="video-preview">
+                <div class="vp-dummy">영상 미리보기</div>
+              </div>
 
+              <div class="score-row">
+                <div>
+                  <div class="score-label">AI 생성 가능성</div>
+                  <div class="score-bar">
+                    <div class="score-fill" style="width:87%"></div>
+                  </div>
+                  <div class="score-desc">AI 생성/조작 가능성이 높게 감지되었습니다.</div>
+                </div>
+                <div class="score-num">
+                  <div class="big">87%</div>
+                  <div class="small">매우 높음</div>
+                </div>
               </div>
             </div>
 
-            <section class="heatmap-card">
-              <div class="result-card__content">
-                <div class="heatmap-header">
-                  <div>
-                    <h3>AI (Grad-CAM) 히트맵</h3>
-                    <p class="result-card__text">AI 모델이 분석한 영상의 특정 영역을 시각화합니다.</p>
-                  </div>
-                  <div class="heatmap-nav">
-                    <button type="button" class="heatmap-arrow">&lsaquo;</button>
-                    <button type="button" class="heatmap-arrow">&rsaquo;</button>
-                  </div>
+            <div class="side-col">
+              <div class="card">
+                <h4 class="mini-title">분석 신뢰도</h4>
+                <div class="trust">
+                  <div class="trust-num">94%</div>
+                  <div class="trust-sub">이 분석 결과의 신뢰도</div>
                 </div>
-                <div class="heatmap-grid">
-                  <div>
-                    <p class="heatmap-label">원본 영상</p>
-                    <div class="heatmap-preview">NO IMAGE</div>
-                  </div>
-                  <div>
-                    <p class="heatmap-label">AI 감지 히트맵</p>
-                    <div class="heatmap-preview heatmap-preview--accent">NO IMAGE</div>
-                  </div>
-                </div>
-                <p class="heatmap-note">
-                  빨간색 영역은 AI 모델이 조작 신호로 감지한 부분입니다. 파란색 영역은 자연스러운 특성을 보입니다.
-                </p>
               </div>
-            </section>
-          </section>
-        </div>
+
+              <div class="card">
+                <h4 class="mini-title">분석 정보</h4>
+                <ul class="info-list">
+                  <li><span>분석 시간</span><b>14.2초</b></li>
+                  <li><span>영상 길이</span><b>2분 34초</b></li>
+                  <li><span>해상도</span><b>1920×1080</b></li>
+                  <li><span>프레임 레이트</span><b>30fps</b></li>
+                  <li><span>파일 크기</span><b>245MB</b></li>
+                </ul>
+              </div>
+
+              <div class="card">
+                <h4 class="mini-title">사용된 모델</h4>
+                <div class="chips">
+                  <span class="chip">Vision Transformer</span>
+                  <span class="chip">ResNet-50</span>
+                  <span class="chip">XceptionNet</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3) 타임라인 -->
+          <div class="card section-card">
+            <h3 class="section-title">프레임별 위조 의심도 타임라인</h3>
+            <div class="timeline-dummy">
+              <div class="bar red" style="width:22%"></div>
+              <div class="bar blue" style="width:18%"></div>
+              <div class="bar red" style="width:30%"></div>
+              <div class="bar blue" style="width:15%"></div>
+              <div class="bar red" style="width:15%"></div>
+            </div>
+            <p class="hint">빨강: 높음(70%+) · 노랑: 중간(50~69%) · 파랑: 낮음(50% 미만)</p>
+          </div>
+
+          <!-- 4) 상세 분석 -->
+          <div class="card section-card">
+            <h3 class="section-title">상세 분석 결과</h3>
+
+            <div class="detail-item">
+              <div class="d-left">
+                <div class="d-title">눈 깜빡임 패턴 <span class="tag high">위험도: 높음</span></div>
+                <div class="d-desc">0.8~1.2초 구간에서 비정상적으로 높은 깜빡임 빈도 감지</div>
+              </div>
+              <div class="d-right">
+                <div class="d-percent">92%</div>
+                <div class="d-sub">신뢰도</div>
+              </div>
+              <div class="d-bar"><span style="width:92%"></span></div>
+            </div>
+
+            <div class="detail-item">
+              <div class="d-left">
+                <div class="d-title">입 모양·음성 동기화 <span class="tag high">위험도: 높음</span></div>
+                <div class="d-desc">음성과 입 모양 간 평균 0.18초 지연 발생</div>
+              </div>
+              <div class="d-right">
+                <div class="d-percent">87%</div>
+                <div class="d-sub">신뢰도</div>
+              </div>
+              <div class="d-bar"><span style="width:87%"></span></div>
+            </div>
+
+            <div class="detail-item">
+              <div class="d-left">
+                <div class="d-title">얼굴 경계 왜곡 <span class="tag mid">위험도: 중간</span></div>
+                <div class="d-desc">헤어라인/윤곽부 픽셀 불연속성 다수 발견</div>
+              </div>
+              <div class="d-right">
+                <div class="d-percent">74%</div>
+                <div class="d-sub">신뢰도</div>
+              </div>
+              <div class="d-bar mid"><span style="width:74%"></span></div>
+            </div>
+
+            <div class="detail-item">
+              <div class="d-left">
+                <div class="d-title">조명 일관성 <span class="tag mid">위험도: 중간</span></div>
+                <div class="d-desc">얼굴 좌우 조명 방향 불일치(3.2s ~ 4.1s)</div>
+              </div>
+              <div class="d-right">
+                <div class="d-percent">68%</div>
+                <div class="d-sub">신뢰도</div>
+              </div>
+              <div class="d-bar mid"><span style="width:68%"></span></div>
+            </div>
+
+            <div class="detail-item">
+              <div class="d-left">
+                <div class="d-title">텍스처 분석 <span class="tag low">위험도: 낮음</span></div>
+                <div class="d-desc">피부 질감 생성 패턴의 미세한 규칙성 감지</div>
+              </div>
+              <div class="d-right">
+                <div class="d-percent">61%</div>
+                <div class="d-sub">신뢰도</div>
+              </div>
+              <div class="d-bar low"><span style="width:61%"></span></div>
+            </div>
+          </div>
+
+          <!-- 5) PDF 다운로드 -->
+          <div class="pdf-area">
+            <a class="pdf-btn" href="./report.pdf" download>분석 리포트 PDF 다운로드</a>
+          </div>
+        </section>
+
       </div>
+    </div>
 
       <footer>
         <div class="wrap">

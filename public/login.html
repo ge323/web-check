@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="./style/base.css">
+    <link rel="stylesheet" href="./style/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <title>졸업설계-웹</title>
@@ -40,22 +41,51 @@
             </div>
         </div>
 
-        <!-- 메인 부분(main) -->
+        <!-- 로그인 -->
         <div id="main">
-            
+            <div class="wrap">
+                <div class="login-wrap">
+                    <div class="login-card">
+                        <h2 class="login-title">로그인</h2>
+                        <p class="login-sub">서비스 이용을 위해 로그인 해주세요.</p>
+
+                        <form class="login-form" action="#" method="post">
+                            <label class="login-label" for="userId">아이디</label>
+                            <input id="userId" name="userId" class="login-input" type="text" placeholder="아이디를 입력하세요" />
+
+                            <label class="login-label" for="userPw">비밀번호</label>
+                            <input id="userPw" name="userPw" class="login-input" type="password" placeholder="비밀번호를 입력하세요" />
+
+                            <button class="login-btn" type="submit">로그인</button>
+
+                            <div class="login-foot">
+                                <span>아직 계정이 없으신가요?</span>
+                                <a class="signup-link" href="./join.html">회원가입하러 가기 →</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
 
 
 
         <!-- 하단(footer) -->
         <footer>
-          
+            <div class="wrap">
+                <div class="btm-text">
+                    <p>졸업설계 프로젝트</p>
+                    <div class="logo">
+                        <a href="./index.html"><img src="" alt="no image"></a>
+                    </div>
+
+                </div>
+            </div>
         </footer>
-    
     
     
     </div>
   </body>
-</html>
+</html>    
+
+<script src="./js/drag.js"></script>

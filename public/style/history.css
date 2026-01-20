@@ -1,0 +1,124 @@
+@import url('./base.css');
+
+.history-section {
+    margin-top: 100px;
+}
+
+.history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.history-title {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 700;
+    border-left: 3px solid #222;
+    padding: 0px 10px;
+}
+
+.clear-all {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 16px;
+}
+
+.clear-all:hover {
+    text-decoration: underline;
+}
+
+.history-notice {
+    max-width: 900px;
+    margin: 8px auto 24px;
+    color: #797979;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px solid #e7e7e7;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 220px;
+}
+
+.file-name {
+    font-weight: 600;
+    margin: 0;
+}
+
+.date {
+    color: #777;
+    font-size: 13px;
+    min-width: 180px;
+}
+
+.history-item .badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.history-item .badge.high {
+    background-color: #ffe5e5;
+    color: #d93025;
+}
+
+.history-item .badge.medium {
+    background-color: #fff4cc;
+    color: #b26a00;
+}
+
+.history-item .badge.low {
+    background-color: #e6fff1;
+    color: #1f7a4a;
+}
+
+.right-group {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.actions button {
+    border: none;
+    padding: 5px 7px;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 20px;
+}

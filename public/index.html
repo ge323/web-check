@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="./style/css.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -25,6 +25,9 @@
                         <li><a href="./intro.html">소개</a></li>
                         <li><a href="./gallery.html">AI 갤러리</a></li>
                         <li><a href="./history.html">히스토리</a></li>
+                        <!-- 새로 만든 것  -->
+                        <li><a href="./login.html">로그인</a></li>
+                        <li><a href="./join.html">회원가입</a></li>
                         <div class="right">
                             <select style="cursor: pointer;" name="language" id="language">
                                 <option value="한국어">한국어</option>
@@ -33,14 +36,6 @@
                             </select>
                         </div>
                     </ul>
-                    <!-- <div class="right">
-                        <select name="language" id="language">
-                            <option value="한국어">한국어</option>
-                            <option value="영어">영어</option>
-                            <option value="일본어">일본어</option>
-                        </select>
-                    </div> -->
-                    
                 </div>
             </div>
         </div>
@@ -48,55 +43,96 @@
         <!-- 메인 부분(main) -->
         <div id="main">
             <div class="wrap">
-                <div class="box">
+
+                <!-- ✅ 기존 메인 UI(홈) : box 하나만, 여기에 id만 부여 -->
+                <div class="box" id="homeUI">
                     <div class="left">
                         <div class="title">
-                            <h1>당신이 보고있는 영상,<br> <span style="background-image: linear-gradient(to right, blue, skyblue); background-clip: text; -webkit-background-clip: text; color: transparent;">진짜인지</span> 확인하세요</h1>
-                            <p>딥러닝 기술로 영상의 위변조 여부를 분석하고, 의심 구간과 근거를 명확하게 제시합니다.</p>
+                            <h1>
+                                당신이 보고있는 영상,<br>
+                                <span style="color: #000;">
+                                    <span style="background-image: linear-gradient(to right, blue, skyblue); background-clip: text; -webkit-background-clip: text; color: transparent;">진짜인지</span>
+                                    확인하세요
+                                </span>
+                            </h1>
+                            <p>딥러닝 기술로 영상의 위변조 여부를 분석하고, <br> 의심 구간과 근거를 명확하게 제시합니다.</p>
                         </div>
-                        <div class="btn">
-                            <button><a href="#">분석하기</a></button>
+
+                        <!-- 로딩 오버레이 -->
+                        <div id="loadingOverlay" class="loading-overlay" aria-hidden="true">
+                            <div class="loading-box" role="status" aria-live="polite">
+                                <p class="loading-label">영상을 분석하고 있습니다</p>
+                                <div class="loading-status-row">
+                                    <div class="spinner" aria-hidden="true"></div>
+                                    <p id="loadingFileName" class="loading-file-name">파일을 선택해 주세요</p>
+                                </div>
+                                <div class="loading-preview-wrapper">
+                                    <div id="loadingPreviewPlaceholder" class="loading-preview loading-preview--placeholder">No image</div>
+                                    <img id="loadingPreview" class="loading-preview" alt="사용자가 업로드한 이미지" hidden />
+                                </div>
+                                <p class="loading-mention">분석을 위한 데이터 전처리를 진행 중입니다</p>
+                                <div class="loading-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                    <div class="loading-progress__bar"></div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- 로딩 오버레이 -->
                     </div>
+
                     <div class="right">
                         <input type="radio" name="tab" id="t1" checked hidden>
                         <input type="radio" name="tab" id="t2" hidden>
 
                         <div class="tabs">
-                            <label for="t1">파일 업로드</label>
-                            <label for="t2">url 입력</label>
-                        </div>
-
-                        <div class="tab-box">
-                        <!-- 파일 업로드 -->
-                        <div class="tb tb-file">
-                            <input type="file" id="fileInput" class="file-input" accept="image/*" hidden />
-
-                            <div class="upload-row">
-                            <span class="file-status" id="fileStatus">선택된 파일 없음</span>
+                            <div class="left">
+                                <label for="t1">파일 업로드</label>
+                                <label for="t2">url 입력</label>
                             </div>
 
-                            <div class="dropzone" id="dropzone" tabindex="0" role="button">
-                            <div class="dropzone-text" id="dropzoneText">
-                                <p class="dropzone-title">여긴 드래그</p>
-                                <p class="dropzone-sub">또는 위의 “파일 선택”을 눌러 업로드</p>
-                            </div>
-                            <img id="dzPreview" class="dz-preview" alt="업로드 이미지 미리보기" hidden />
+                            <div class="btn">
+                                <button id="analyzeBtn" type="button">분석하기</button>
                             </div>
                         </div>
 
-                        <!-- url 입력 -->
-                        <div class="tb tb-url">
-                            <input type="text" class="url-box" placeholder="url을 입력하세요.">
-                        </div>
-                        </div>
+                        <!-- 업로드/URL UI -->
+                        <div class="tab-box" id="analyzeUI">
+                            <div class="tb tb-file">
+                                <input type="file" id="fileInput" class="file-input" accept="image/*" hidden />
+
+                                <div class="dropzone" id="dropzone" tabindex="0" role="button">
+                                    <div class="dropzone-text" id="dropzoneText">
+                                        <p class="dropzone-title">여긴 드래그</p>
+                                        <p class="dropzone-sub">또는 위의 “파일 업로드”를 눌러 업로드</p>
+                                    </div>
+                                    <img id="dzPreview" class="dz-preview" alt="업로드 이미지 미리보기" hidden />
+                                </div>
+
+                                <div class="upload-row">
+                                    <span style="display:none;" class="file-status" id="fileStatus">선택된 파일 없음</span>
+                                </div>
+                            </div>
+
+                            <div class="tb tb-url">
+                                <div class="url-panel">
+                                    <div class="url-head">
+                                        <p class="url-title">URL 붙여넣기</p>
+                                        <p class="url-sub">유튜브/트위터 등 영상 링크를 입력하면 분석을 시작할 수 있어요.</p>
+                                    </div>
+
+                                    <div class="url-field">
+                                        <span class="url-icon"></span>
+                                        <input type="text" id="urlInput" class="url-box" placeholder="https://..." />
+                                        <button type="button" class="url-clear" aria-label="clear">×</button>
+                                    </div>
+
+                                    <p class="url-hint">예: https://www.youtube.com/watch?v=...</p>
+                                </div>
+                            </div>
 
                         </div>
-                    
-
+                    </div>
                 </div>
-                </div>
-                
+                <!-- ✅ homeUI 끝 -->
             </div>
             <!-- <div class="bak-img">
                 <img src="./img/main.png" alt="">
@@ -120,6 +156,93 @@
     
     
     </div>
+    <script>
+        const analyzeBtn = document.getElementById("analyzeBtn");
+        const loadingOverlay = document.getElementById("loadingOverlay");
+        const progressTrack = document.querySelector(".loading-progress");
+        const progressBar = document.querySelector(".loading-progress__bar");
+        const loadingMention = document.querySelector(".loading-mention");
+
+        const loadingStages = [
+            { threshold: 0, text: "분석을 위한 데이터 전처리를 진행 중입니다" },
+            { threshold: 35, text: "프레임 및 음성 구간별 정밀 분석을 진행 중입니다" },
+            { threshold: 70, text: "최종 분석 리포트를 생성하고 있습니다" },
+        ];
+
+        let progressTimer = null;
+        let currentStageIndex = -1;
+
+        const updateLoadingStage = (progress) => {
+            if (!loadingMention) return;
+
+            let nextStage = currentStageIndex;
+            for (let i = loadingStages.length - 1; i >= 0; i--) {
+                if (progress >= loadingStages[i].threshold) {
+                    nextStage = i;
+                    break;
+                }
+            }
+
+            if (nextStage !== currentStageIndex && loadingStages[nextStage]) {
+                loadingMention.textContent = loadingStages[nextStage].text;
+                currentStageIndex = nextStage;
+            }
+        };
+
+        const startProgressSimulation = () => {
+            if (!progressBar || !progressTrack) return;
+
+            let progress = 0;
+            progressBar.style.width = "0%";
+            progressTrack.setAttribute("aria-valuenow", "0");
+            currentStageIndex = -1;
+            updateLoadingStage(progress);
+
+            if (progressTimer) {
+                clearInterval(progressTimer);
+            }
+
+            progressTimer = setInterval(() => {
+                progress = Math.min(progress + 5, 100);
+                progressBar.style.width = `${progress}%`;
+                progressTrack.setAttribute("aria-valuenow", String(progress));
+                updateLoadingStage(progress);
+
+                if (progress >= 100) {
+                    clearInterval(progressTimer);
+                }
+            }, 120);
+        };
+
+        const stopProgressSimulation = () => {
+            if (progressTimer) {
+                clearInterval(progressTimer);
+                progressTimer = null;
+            }
+        };
+
+        analyzeBtn.addEventListener("click", () => {
+            if (!loadingOverlay) return;
+
+            // 로딩 표시
+            loadingOverlay.classList.add("show");
+            loadingOverlay.setAttribute("aria-hidden", "false");
+            startProgressSimulation();
+
+            // 예시용 타이머 - 3초 동안 진행바를 채운 뒤 이동
+            setTimeout(() => {
+                if (progressBar && progressTrack) {
+                    progressBar.style.width = "100%";
+                    progressTrack.setAttribute("aria-valuenow", "100");
+                }
+                updateLoadingStage(100);
+
+                stopProgressSimulation();
+                window.location.href = "gallery.html";
+            }, 3200);
+        });
+    </script>
+
   </body>
 </html>    
 
