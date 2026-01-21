@@ -209,7 +209,7 @@ li {
 
 #main .box {
     position: relative;
-    top: 130px;
+    top: 300px;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -433,6 +433,7 @@ li {
 .bak-img img {
     width: 100%;
 }
+
 /* ?�쪽?� ?�동 */
 #main .box>.right {
     flex: 0 0 520px;
@@ -746,6 +747,7 @@ li {
     color: #9a9a9a;
 }
 
+
 /* 모바????*/
 /* =========================
    ??Responsive (Mobile/Tablet)
@@ -829,8 +831,8 @@ li {
 
     /* 분석 버튼: 모바?�에???�무 �?보이지 ?�게 */
     #analyzeBtn {
-    color: rgb(73, 105, 219);
-    color: rgb(73, 105, 219);
+        color: rgb(73, 105, 219);
+        color: rgb(73, 105, 219);
         width: 160px;
     }
 
@@ -903,8 +905,8 @@ li {
     }
 
     #analyzeBtn {
-    color: rgb(73, 105, 219);
-    color: rgb(73, 105, 219);
+        color: rgb(73, 105, 219);
+        color: rgb(73, 105, 219);
         width: 140px;
     }
 
@@ -913,4 +915,3 @@ li {
         height: 220px;
     }
 }
-
